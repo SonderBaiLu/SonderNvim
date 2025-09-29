@@ -36,7 +36,7 @@ vim.api.nvim_create_user_command("CyberUpdate", function()
 	require("core.utils.utils").update_all()
 end, { desc = "Updates plugins, mason packages, treesitter parsers" })
 
-pcall(vim.cmd.colorscheme, "onedark")
+-- pcall(vim.cmd.colorscheme, "onedark")
 
 -- fix commentstrings to work with native nvim commenting
 if enabled(group, "treesitter") then
@@ -46,8 +46,6 @@ if enabled(group, "treesitter") then
 			or get_option(filetype, option)
 	end
 end
-
-pcall(require, "lsp-zero")
 
 if exist and type(user_config) == "table" and user_config.user_conf then
 	user_config.user_conf()

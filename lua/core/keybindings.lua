@@ -130,27 +130,27 @@ if enabled(group, "notify") then
 end
 
 -- LSP相关功能
-if enabled(group, "lsp_zero") then
-    _G.buf = vim.lsp.buf -- 全局注册LSP缓冲区方法
-    -- 全局替换当前光标下的单词
-    map("n", "rg", ":%s/<C-r><C-w>//g<Left><Left>", { desc = "全局替换" })
-    -- 跳转到声明
-    map("n", "gD", "<CMD>lua buf.declaration()<CR>")
-    -- 跳转到定义
-    map("n", "gd", "<CMD>lua buf.definition()<CR>")
-    -- 跳转到实现
-    map("n", "gi", "<CMD>lua buf.implementation()<CR>")
-    -- 查找引用
-    map("n", "gr", "<CMD>Telescope lsp_references<CR>")
-    -- 显示签名帮助
-    map("n", "sh", "<CMD>lua buf.signature_help()<CR>")
-    -- 重命名符号
-    map("n", "<leader>rn", "<CMD>lua buf.rename()<CR>")
-    -- 代码操作
-    map("n", "<leader>ca", "<CMD>lua buf.code_action()<CR>")
-    -- 切换内联提示
-    map("n", "<C-k>", "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
-end
+-- if enabled(group, "lsp_zero") then
+--     _G.buf = vim.lsp.buf -- 全局注册LSP缓冲区方法
+--     -- 全局替换当前光标下的单词
+--     map("n", "rg", ":%s/<C-r><C-w>//g<Left><Left>", { desc = "全局替换" })
+--     -- 跳转到声明
+--     map("n", "gD", "<CMD>lua buf.declaration()<CR>")
+--     -- 跳转到定义
+--     map("n", "gd", "<CMD>lua buf.definition()<CR>")
+--     -- 跳转到实现
+--     map("n", "gi", "<CMD>lua buf.implementation()<CR>")
+--     -- 查找引用
+--     map("n", "gr", "<CMD>Telescope lsp_references<CR>")
+--     -- 显示签名帮助
+--     map("n", "sh", "<CMD>lua buf.signature_help()<CR>")
+--     -- 重命名符号
+--     map("n", "<leader>rn", "<CMD>lua buf.rename()<CR>")
+--     -- 代码操作
+--     map("n", "<leader>ca", "<CMD>lua buf.code_action()<CR>")
+--     -- 切换内联提示
+--     map("n", "<C-k>", "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
+-- end
 
 -- Session管理功能
 if enabled(group, "session_manager") then
