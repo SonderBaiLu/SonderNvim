@@ -180,7 +180,23 @@ require("lazy").setup({
 			{ "rafamadriz/friendly-snippets" },
 		},
 	},
-	{ "NvChad/nvim-colorizer.lua", cond = enabled(group, "colorizer"), event = "VimEnter" },
+	{
+		"saghen/blink.cmp",
+		version = "*",
+		cond = enabled(group, "blink"),
+		event = "InsertEnter",
+		config = function()
+			require("plugin-configs.blink")
+		end,
+		dependencies = {
+			{ "rafamadriz/friendly-snippets" },
+		},
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		cond = enabled(group, "colorizer"),
+		event = "VimEnter",
+	},
 	{
 		"mfussenegger/nvim-dap",
 		cond = enabled(group, "dap"),

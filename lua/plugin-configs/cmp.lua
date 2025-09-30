@@ -97,10 +97,6 @@ cmp.setup({
 		["<C-c>"] = cmp.mapping.abort(),
 		-- 手动触发补全
 		["<C-n>"] = { i = cmp.mapping.complete() },
-		-- 向前跳转代码片段
-		--	["<C-f>"] = cmp_action.luasnip_jump_forward(),
-		-- 向后跳转代码片段
-		--	["<C-b>"] = cmp_action.luasnip_jump_backward(),
 	},
 	-- 补全源配置
 	sources = {
@@ -111,4 +107,3 @@ cmp.setup({
 		{ name = "path", option = { trailing_slash = true } }, -- 路径补全，保留尾部斜杠
 	},
 })
-
