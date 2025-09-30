@@ -18,7 +18,6 @@ blink.setup({
 		keymap = {
 			preset = "super-tab",
 		},
-
 		source = {
 			default = {
 				"copilot", -- GitHub Copilot（需确保插件已安装）
@@ -37,12 +36,5 @@ blink.setup({
 				border = "rounded", -- 文档窗口边框
 			},
 		},
-	},
-})
-require("nvim-autopairs").setup({
-	check_ts = true, -- 配合 treesitter 自动配对
-	ts_config = {
-		lua = { "string", "source" },
-		javascript = { "string", "template_string" },
 	},
 })

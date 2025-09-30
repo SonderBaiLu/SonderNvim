@@ -59,7 +59,8 @@ M.autocommands = {
 	remember_file_state = true, -- 记住文件状态
 	session_saved_notification = true, -- 会话保存通知
 	css_colorizer = true, -- CSS颜色高亮
-	cmp = true, -- 代码补全
+	-- cmp = true, -- 代码补全
+	blink = true,
 }
 
 -- 启用/禁用插件
@@ -85,7 +86,6 @@ M.enable_plugins = {
 	noice = true, -- 高级UI组件
 	null_ls = true, -- LSP诊断和代码操作
 	autopairs = true, -- 自动括号配对
-	cmp = false, -- 代码补全引擎
 	colorizer = true, -- 颜色高亮
 	dap = true, -- 调试适配器协议 n
 	notify = true, -- 通知管理器
