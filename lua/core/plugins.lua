@@ -190,6 +190,7 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			{ "rafamadriz/friendly-snippets" },
+			{ "L3MON4D3/LuaSnip" }, -- 添加 LuaSnip 依赖（代码片段引擎
 		},
 	},
 	{
