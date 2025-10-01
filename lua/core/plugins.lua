@@ -361,6 +361,14 @@ require("lazy").setup({
 			require("plugin-configs.typescriptTools")
 		end,
 	},
+	{
+		"zbirenbaum/copilot.lua",
+		cond = enabled(group, "copilot"), -- 关联用户配置中的启用开关
+		event = "InsertEnter", -- 插入模式时加载
+		config = function()
+			require("plugin-configs.copilot") -- 加载配置文件
+		end,
+	},
 	plugins,
 }, {
 	defaults = { lazy = true },

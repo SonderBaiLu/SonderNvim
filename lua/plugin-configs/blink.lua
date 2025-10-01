@@ -1,39 +1,59 @@
 local blink = require("blink.cmp")
-local luasnip = require("luasnip") -- 代码片段引擎
-require("luasnip.loaders.from_vscode").lazy_load() -- 加载VSCode风格片段
--- 工具函数（检查光标前是否有单词）
-local has_words_before = require("core.utils.utils").has_words_before
+
 blink.setup({
-	opts = {
-		completion = {
-			min_length = 1, -- 1个单词就启动补全
-			menu = {
-				enabled = true,
-				auto_show = true, -- 自动显示补全菜单
-			},
-			documentation = {
-				auto_show = true,
-			},
+	-- 补全行为设置
+	completion = {
+		keyword = {
+			range = "prefix", -- 补全关键词的范围
 		},
-		keymap = {
-			preset = "super-tab",
+		trigger = {
+			-- 输入关键字（如字母、_、.）时自动触发补全
+			show_on_keyword = true,
+			-- 特定字符触发补全（如输入“.”后立即触发对象属性补全）
+			show_on_trigger_characters = { ".", ":", "@", "#" },
+			-- 触发字符输入时是否自动插入第一个补全项（关闭，避免误触）
+			insert_on_trigger_character = false,
 		},
-		source = {
-			default = {
-				"copilot", -- GitHub Copilot（需确保插件已安装）
-				"lsp", -- LSP 补全（对应 nvim_lsp）
-				"nvim_lua", -- Neovim Lua API 补全
-				"snippets", -- 代码片段（对应 luasnip）
-				{ name = "path", option = { trailing_slash = true } }, -- 路径补全
-				"buffer", -- 缓冲区内容补全
-			},
+		documentation = {
+			auto_show = true, -- 自动显示补全项的文档:cite[8]
 		},
-		ui = {
-			menu = {
-				border = "rounded", -- 补全菜单边框（对应 bordered）
+	},
+	-- 按键映射配置
+	keymap = {
+		preset = "default", -- 使用预设的默认键位:cite[8]
+		-- 进阶键位配置示例，可提供更流畅的导航
+		["<C-j>"] = {
+			"select_next", -- 选择下一个补全项
+			"snippet_forward", -- 在代码片段中跳转到下一个占位符:cite[2]
+			"fallback", -- 最后回退到默认Tab行为:cite[2]
+		},
+		["<C-k>"] = {
+			"select_prev", -- 选择上一个补全项
+			"snippet_backward", -- 在代码片段中跳转到上一个占位符:cite[2]
+			"fallback",
+		},
+	},
+
+	-- 补全源配置
+	sources = {
+		providers = {
+			lsp = {
+				name = "LSP",
+				module = "blink.cmp.sources.lsp",
+				score_offset = 1, -- 调整此源的排序权重:cite[8]
 			},
-			documentation = {
-				border = "rounded", -- 文档窗口边框
+			snippets = {
+				name = "Snippets",
+				module = "blink.cmp.sources.snippets",
+				-- 名称可省略，插件会自动生成（如 `snippets` 会生成 `Snippets`）:cite[4]
+			},
+			buffer = {
+				name = "Buffer",
+				module = "blink.cmp.sources.buffer",
+			},
+			path = {
+				name = "Path",
+				module = "blink.cmp.sources.path",
 			},
 		},
 	},

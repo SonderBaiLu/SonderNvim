@@ -104,6 +104,7 @@ M.enable_plugins = {
 	windline = true, -- 状态栏动画
 	zen = true, -- 专注模式
 	tsscriptTools = true, -- js
+	copilot = true,
 }
 
 -- 额外插件配置
